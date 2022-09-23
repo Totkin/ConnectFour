@@ -1,8 +1,13 @@
 package ConnectFour;
 
 public class Player {
-    public Token token;
-    public Player(String color) {
-        this.token=new Token(color);
+    private int color;
+
+    public Player(int color) {
+        this.color= color;
+    }
+
+    public int getColor() {
+        return color;
     }
 }
