@@ -1,7 +1,5 @@
-import java.util.Scanner;
-
 public class ConnectFour {
-    private  void playConnectFour() {
+    private  void play() {
         Board board = new Board();
         Player[] players = {new Player(1), new Player(2)};
         int turn = 0;
@@ -30,6 +28,6 @@ public class ConnectFour {
         return turn;
     }
     public static void main(String[] args) {
-        new ConnectFour().playConnectFour();
+        new ConnectFour().play();
     }
 }
