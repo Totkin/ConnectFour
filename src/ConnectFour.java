@@ -1,5 +1,3 @@
-package ConnectFour;
-
 import java.util.Scanner;
 
 public class ConnectFour {
@@ -28,5 +26,7 @@ public class ConnectFour {
         }
         return turn;
     }
-
+    public static void main(String[] args) {
+        new ConnectFour().playConnectFour();
+    }
 }

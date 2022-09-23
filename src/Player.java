@@ -1,5 +1,3 @@
-package ConnectFour;
-
 public class Player {
     private int color;
 
