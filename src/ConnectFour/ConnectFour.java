@@ -20,13 +20,13 @@ public class ConnectFour {
         System.out.println("Game start");
         do {
             System.out.println(board.paint());
-            System.out.println("Turno del jugador " + players[turn - 1].getColor());
-            System.out.println("Escriba la columna donde quiere insertar la ficha: ");
+            System.out.println("Player turn " + players[turn - 1].getColor());
+            System.out.println("Type the column where you want to insert the token:");
             board.addToken(Integer.parseInt(entrada.nextLine()), players[turn - 1].getColor());
             turn = changeTurn(turn);
         } while (!board.hasFourConnected());
         System.out.println(board.paint());
-        System.out.println("Game finnished: player" + players[turn - 2].getColor() + " winns");
+        System.out.println("Game finished: player" + players[turn - 2].getColor() + " winns");
     }
 
     private static int changeTurn(int turn) {
