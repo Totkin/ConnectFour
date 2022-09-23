@@ -4,14 +4,6 @@ import java.util.Scanner;
 
 public class ConnectFour {
     public static void playConnectFour() {
-/*		System.out.println("Game start");
-		do {
-			System.out.println(board.paint());
-			turn.changePlayerTurn();
-			player.insertToken();
-		}while(!board.hasFourConnected());
-		board.paint();
-		System.out.println("Game finnished: player x winns");*/
         Board board = new Board();
         Player[] players = {new Player(1), new Player(2)};
         Scanner entrada = new Scanner(System.in);
@@ -21,7 +13,7 @@ public class ConnectFour {
         do {
             turn = changeTurn(turn);
             System.out.println(board.paint());
-            System.out.println("Player turn " + players[turn - 1].getColor());
+            System.out.println("Player" + players[turn - 1].getColor() + " turn");
             System.out.println("Type the column where you want to insert the token:");
             board.addToken(Integer.parseInt(entrada.nextLine()), players[turn - 1].getColor());
         } while (!board.hasFourConnected());
