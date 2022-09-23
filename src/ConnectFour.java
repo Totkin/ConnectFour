@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ConnectFour {
-    public static void playConnectFour() {
+    private  void playConnectFour() {
         Board board = new Board();
         Player[] players = {new Player(1), new Player(2)};
         Scanner entrada = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class ConnectFour {
         System.out.println("Game finished: player" + players[turn - 1].getColor() + " winns");
     }
 
-    private static int changeTurn(int turn) {
+    private  int changeTurn(int turn) {
         turn++;
         if (turn > 2) {
             turn = 1;
