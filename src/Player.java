@@ -11,7 +11,7 @@ public class Player {
         return color;
     }
 
-    public void getUserPosition(int turn,Board board){
+    public void getUserPosition(Board board){
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("Player" + this.color + " turn");
