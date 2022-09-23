@@ -9,7 +9,7 @@ public class ConnectFour {
 
     }
 
-    private static void playConnectFour() {
+    public static void playConnectFour() {
 /*		System.out.println("Game start");
 		do {
 			System.out.println(board.paint());
