@@ -1,5 +1,3 @@
-package ConnectFour;
-
 public class Board {
 
     private final int ROWS = 6, COLUMNS = 7;
