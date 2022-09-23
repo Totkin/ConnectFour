@@ -1,53 +1,139 @@
 package ConnectFour;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Board {
 
-    ArrayList<String> columna;
-    ArrayList<ArrayList<String>> filas;
+    private final int ROWS = 6, COLUMNS = 7;
+    private int[][] squares = new int[ROWS][COLUMNS];
 
     public Board() {
-        columna = new ArrayList<>( Arrays.asList("1","0","0","0","0","0","0"));
-        filas = new ArrayList<>( Arrays.asList(columna,columna,columna,columna,columna,columna));
-        isColumnFull(2,"R");
-    }
-
-    public void isColumnFull(int column,String color) {
-        if (filas.get(column).size()<=100) {
-        insertToken(column,color);
-        }else {
-            System.out.println("ya no cabe mas");
-        }
-    }
-
-    private void insertToken(int column,String color) {
-        filas.get(column).add(color);
-    }
-
-    public void paint() {
-        for (ArrayList<String> d : filas) {
-            System.out.println(d);
-        }
-    }
-
-    public void paintBoard() {
-
-        for (int row = 0; row < filas.get(0).size(); row++){
-            System.out.print("|");
-            for (int col = 0; col <= 1+filas.size(); col++){
-                System.out.print(filas.get(row).get(col));
-                System.out.print("|");
+        for(int i=0; i<ROWS; i++) {
+            for(int j=0; j<COLUMNS; j++) {
+                squares[i][j] = 0;
             }
-            System.out.println();
-
         }
-        System.out.println(" 0 1 2 3 4 5 6");
-        System.out.println();
-
     }
 
-} 
+    public String paint() {
+        String row;
+        String graphicBoard = "";
+        for(int i=0; i<ROWS; i++) {
+            row= "";
+            for(int j=0; j<COLUMNS; j++) {
+                row+= squares[i][j] + " ";
+            }
+            graphicBoard+= row + "\n";
+        }
+        return graphicBoard;
+    }
+
+    public boolean addToken(int column, int color) {
+        boolean added = false;
+        if(column>0 && column<=COLUMNS){
+            for(int i=ROWS-1; i>=0; i--) {
+                if(squares[i][column-1]==0) {
+                    squares[i][column-1] = color;
+                    added=true;
+                    break;
+                }
+            }
+        }
+        return added;
+    }
+
+    public boolean hasFourConnected() {
+        int color;
+        boolean hasFour= false;
+        mainLoop:
+        for(int i=0; i<ROWS; i++) {
+            for(int j=0; j<COLUMNS; j++) {
+                color= squares[i][j];
+                if(color!=0) {
+                    if(hasFour= hasFourDown(color,i,j)) {
+                        break mainLoop;
+                    }
+                    if(hasFour= hasFourRight(color,i,j)) {
+                        break mainLoop;
+                    }
+                    if(hasFour= hasFourDownRight(color,i,j)) {
+                        break mainLoop;
+                    }
+                    if(hasFour= hasFourDownLeft(color,i,j)) {
+                        break mainLoop;
+                    }
+                }
+            }
+        }
+        return hasFour;
+    }
+
+    //checks if given a square, it has 3 more tokens under it with the same color
+    private boolean hasFourDown(int color, int i, int j) {
+        int counter=1;
+        boolean hasFour= false;
+        if(ROWS-i>=4) {
+            while(i+1<ROWS && color==squares[i+1][j]) {
+                i++;
+                counter++;
+                if(counter==4) {
+                    hasFour=true;
+                    break;
+                }
+            }
+        }
+        return hasFour;
+    }
+
+    //checks if given a square, it has 3 more tokens right it with the same color
+    private boolean hasFourRight(int color, int i, int j) {
+        int counter=1;
+        boolean hasFour= false;
+        if(COLUMNS-j>=4) {
+            while(j+1<COLUMNS && color==squares[i][j+1]) {
+                j++;
+                counter++;
+                if(counter==4) {
+                    hasFour=true;
+                    break;
+                }
+            }
+        }
+        return hasFour;
+    }
+
+    //checks if given a square, it has 3 more tokens in the down right diagonal with the same color
+    private boolean hasFourDownRight(int color, int i, int j) {
+        int counter=1;
+        boolean hasFour= false;
+        if(ROWS-i>=4 && COLUMNS-j>=4) {
+            while(i+1<ROWS && j+1<COLUMNS && color==squares[i+1][j+1]) {
+                i++;
+                j++;
+                counter++;
+                if(counter==4) {
+                    hasFour=true;
+                    break;
+                }
+            }
+        }
+        return hasFour;
+    }
+
+    //checks if given a square, it has 3 more tokens in the down left diagonal with the same color
+    private boolean hasFourDownLeft(int color, int i, int j) {
+        int counter=1;
+        boolean hasFour= false;
+        if(ROWS-i>=4 && j+1>=4) {
+            while(i+1<ROWS && j-1>=0 && color==squares[i+1][j-1]) {
+                i++;
+                j--;
+                counter++;
+                if(counter==4) {
+                    hasFour=true;
+                    break;
+                }
+            }
+        }
+        return hasFour;
+    }
+
+}
