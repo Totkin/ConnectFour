@@ -3,12 +3,6 @@ package ConnectFour;
 import java.util.Scanner;
 
 public class ConnectFour {
-    public static void main(String[] args) {
-
-        playConnectFour();
-
-    }
-
     public static void playConnectFour() {
 /*		System.out.println("Game start");
 		do {
