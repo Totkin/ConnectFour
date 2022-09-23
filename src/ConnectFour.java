@@ -21,7 +21,7 @@ public class ConnectFour {
         System.out.println(board.paint());
         System.out.println("Game finished: player" + players[turn].getColor() + " winns");
     }
-
+/*
     private int changeTurn(int turn) {
         turn++;
         if (turn > 2) {
@@ -29,7 +29,7 @@ public class ConnectFour {
         }
         return turn;
     }
-
+*/
     public static void main(String[] args) {
         new ConnectFour().play();
     }
