@@ -1,7 +1,7 @@
 public class ConnectFour {
+    Board board = new Board();
+    Player[] players = {new Player(1), new Player(2)};
     private void play() {
-        Board board = new Board();
-        Player[] players = {new Player(1), new Player(2)};
         int turn = 0;
 
         System.out.println("Game start");
