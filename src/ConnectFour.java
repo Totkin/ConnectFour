@@ -13,7 +13,8 @@ public class ConnectFour {
             }
         } while (!board.hasFourConnected());
         board.paint();
-        System.out.println("Game finished: player" + players[turn].getColor() + " winns");
+       // System.out.println("Game finished: player" + players[turn].getColor() + " winns");
+        players[turn].winner();
     }
 
     public static void main(String[] args) {
