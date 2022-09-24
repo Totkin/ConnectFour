@@ -17,4 +17,8 @@ public class Player {
         System.out.println("Type the column where you want to insert the token:");
         board.addToken(Integer.parseInt(entrada.nextLine()), this.color);
     }
+
+    public void winner() {
+        System.out.println("Game finished: player" + this.color + " winns");
+    }
 }
