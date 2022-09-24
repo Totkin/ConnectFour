@@ -1,6 +1,14 @@
 public class ConnectFour {
     Board board = new Board();
-    Player[] players = {new Player(1), new Player(2)};
+    //Player[] players = {new Player(1), new Player(2)};
+    Player[] players = new Player[2];
+
+    public ConnectFour() {
+        for (int i = 0; i < players.length; i++) {
+            this.players[i] = new Player(1 + i);
+        }
+    }
+
     private void play() {
         int turn = 0;
 
@@ -8,12 +16,12 @@ public class ConnectFour {
         do {
             board.paint();
             players[turn].addToken(board);
-            if(!board.hasFourConnected()) {
+            if (!board.hasFourConnected()) {
                 turn = (++turn) % 2;
             }
         } while (!board.hasFourConnected());
         board.paint();
-       // System.out.println("Game finished: player" + players[turn].getColor() + " winns");
+        // System.out.println("Game finished: player" + players[turn].getColor() + " winns");
         players[turn].winner();
     }
 
