@@ -1,7 +1,8 @@
 public class Board {
 
-    private final int ROWS = 6, COLUMNS = 7;
-    private int[][] squares = new int[ROWS][COLUMNS];
+    private final int ROWS = 6;
+    private final int COLUMNS = 7;
+    private char[][] squares = new char[ROWS][COLUMNS];
 
     public Board() {
         for (int i = 0; i < ROWS; i++) {
@@ -24,7 +25,7 @@ public class Board {
         System.out.println(graphicBoard);
     }
 
-    public boolean addToken(int column, int color) {
+    public boolean addToken(int column, char color) {
         boolean added = false;
         if (column > 0 && column <= COLUMNS) {
             for (int i = ROWS - 1; i >= 0; i--) {

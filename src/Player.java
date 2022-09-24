@@ -1,14 +1,10 @@
 import java.util.Scanner;
 
 public class Player {
-    private int color;
+    private char color;
 
-    public Player(int color) {
-        this.color = color;
-    }
-
-    public int getColor() {
-        return color;
+    public Player(String color) {
+        this.color = color.charAt(0);
     }
 
     public void addToken(Board board){
