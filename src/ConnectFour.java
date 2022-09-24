@@ -6,10 +6,11 @@ public class ConnectFour {
 
         System.out.println("Game start");
         do {
-            turn = (++turn) % 2;
             System.out.println(board.paint());
             players[turn].addToken(board);
-
+            if(!board.hasFourConnected()) {
+                turn = (++turn) % 2;
+            }
         } while (!board.hasFourConnected());
         System.out.println(board.paint());
         System.out.println("Game finished: player" + players[turn].getColor() + " winns");
