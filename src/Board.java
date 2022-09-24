@@ -11,7 +11,7 @@ public class Board {
         }
     }
 
-    public String paint() {
+    public void paint() {
         String row;
         String graphicBoard = "";
         for (int i = 0; i < ROWS; i++) {
@@ -21,7 +21,7 @@ public class Board {
             }
             graphicBoard += row + "\n";
         }
-        return graphicBoard;
+        System.out.println(graphicBoard);
     }
 
     public boolean addToken(int column, int color) {
