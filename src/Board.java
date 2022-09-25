@@ -25,12 +25,12 @@ public class Board {
         System.out.println(graphicBoard);
     }
 
-    public boolean addToken(int column, char color) {
+    public boolean addToken(int column, Color color) {
         boolean added = false;
         if (column > 0 && column <= COLUMNS) {
             for (int i = ROWS - 1; i >= 0; i--) {
                 if (squares[i][column - 1] == 0) {
-                    squares[i][column - 1] = color;
+                    squares[i][column - 1] = color.getGraphicRepresentation();
                     added = true;
                     break;
                 }
