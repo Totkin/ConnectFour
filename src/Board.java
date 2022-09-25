@@ -25,16 +25,14 @@ public class Board {
         System.out.println(graphicBoard);
     }
 
-    public boolean addToken(int column, Color color) {
-        boolean added = false;
-        if (column > 0 && column <= COLUMNS) {
-            for (int i = ROWS - 1; i >= 0; i--) {
-                if (squares[i][column - 1] == 0) {
-                    squares[i][column - 1] = color.getGraphicRepresentation();
-                    added = true;
-                    break;
-                }
+    public boolean addToken(int column, Color color){
+        boolean added= false;
+        if(column >= 0 && column < COLUMNS && squares[0][column] == 0){
+            int i= ROWS-1;
+            while(squares[i][column] != 0){
+                i--;
             }
+            squares[i][column] = color.getGraphicRepresentation();
         }
         return added;
     }
