@@ -6,7 +6,7 @@ public enum Direction {
     INVERSE_DIAGONAL(1,1);
     private int x;
     private int y;
-    private Direction(int x, int y){
+    Direction(int x, int y){
         this.x = x;
         this.y = y;
     }

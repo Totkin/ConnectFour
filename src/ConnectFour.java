@@ -15,7 +15,7 @@ public class ConnectFour {
         do {
             board.paint();
             players[turn.takeTurn()].addToken(board);
-        } while (board.hasFourConnected());
+        } while (!board.hasFourConnected());
         board.paint();
         players[turn.thisTurn()].winnerDisplay();
     }

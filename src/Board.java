@@ -15,16 +15,13 @@ public class Board {
 
     public void paint() {
         String row;
-        String graphicBoard = "";
         for (int i = 0; i < ROWS; i++) {
             row = "";
             for (int j = 0; j < COLUMNS; j++) {
                 row += squares[i][j].getColor().getCode() + " ";
             }
-            graphicBoard += row + "\n";
             System.out.println(row);
         }
-        //System.out.println(graphicBoard);
     }
 
     public void addToken(int column, Color color){
@@ -60,7 +57,7 @@ public class Board {
         if(counter==4){
             hasFour=true;
         }
-        return !hasFour;
+        return hasFour;
     }
 
     private Coordinate nextCoordinate(Coordinate square, Direction direction){
