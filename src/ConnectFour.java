@@ -17,7 +17,7 @@ public class ConnectFour {
         do {
             System.out.println("How many players play 0, 1 or 2?");
             numberPlayers = input.nextInt();
-        } while (!(0 <= numberPlayers || numberPlayers < 3));
+        } while (!(0 <= numberPlayers && numberPlayers < 3));
 
         if (numberPlayers == 0) {
             createPlayers(2, "machine");
