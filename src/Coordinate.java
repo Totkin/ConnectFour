@@ -1,7 +1,7 @@
 public class Coordinate {
     private int x;
     private int y;
-    private Color color;
+    private final Color color;
 
     public Coordinate(int x, int y, Color color){
         this.x = x;
@@ -11,10 +11,6 @@ public class Coordinate {
 
     public Coordinate(Color color){
         this.color = color;
-    }
-    public Coordinate(int x, int y){
-        this.x = x;
-        this.y = y;
     }
 
     public boolean hasColor(Color color){
@@ -28,10 +24,6 @@ public class Coordinate {
     }
     public int getY(){
         return y;
-    }
-
-    public Coordinate south() {
-        return new Coordinate(x+1,y);
     }
 
     @Override
