@@ -16,9 +16,8 @@ public class Player {
         boolean added;
         System.out.println("Player " + this.color + " turn");
         if (Objects.equals(type, "human")) {
-            System.out.println("Type the column where you want to insert the token:");
             do {
-                added = board.addToken(Integer.parseInt(input.nextLine()) - 1, this.color);
+                added = board.addToken(inputNumber() - 1, this.color);
             } while (!added);
         }
         if (Objects.equals(type, "machine")) {
@@ -31,5 +30,15 @@ public class Player {
 
     public void winnerDisplay() {
         System.out.println("Game finished: the player " + this.color + " has won");
+    }
+
+    private int inputNumber(){
+        int inputNumber;
+        do {
+            System.out.println("Type the column where you want to insert the token from 1 to 7:");
+            while (!input.hasNextInt()) input.next();
+            inputNumber = input.nextInt();
+        } while (!(0 < inputNumber && inputNumber < 8));
+        return inputNumber;
     }
 }
