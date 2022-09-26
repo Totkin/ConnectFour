@@ -7,6 +7,7 @@ public class Player {
     private final String type;
     private final Scanner input = new Scanner(System.in);
     private final Random random = new Random();
+    boolean fullColumn;
 
     public Player(Color color, String type) {
         this.color = color;
@@ -17,10 +18,15 @@ public class Player {
         System.out.println("Player " + this.color + " turn");
         if (Objects.equals(type, "human")) {
             System.out.println("Type the column where you want to insert the token:");
-            board.addToken(Integer.parseInt(input.nextLine()) - 1, this.color);
-        }  if (Objects.equals(type, "machine"))  {
+            do {
+                fullColumn = board.addToken(Integer.parseInt(input.nextLine()) - 1, this.color);
+            } while (!fullColumn);
+        }
+        if (Objects.equals(type, "machine")) {
             System.out.println("The machine has chosen the column:");
-            board.addToken(random.nextInt(6 - 1 + 1) + 1, this.color);
+            do {
+                board.addToken(random.nextInt(6 - 1 + 1) + 1, this.color);
+            } while (!fullColumn);
         }
     }
 
