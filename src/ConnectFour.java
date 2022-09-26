@@ -42,7 +42,7 @@ public class ConnectFour {
         do {
             board.paint();
             players.get(turn.takeTurn()).addToken(board);
-        } while (board.hasFourConnected());
+        } while (!board.hasFourConnected());
         board.paint();
         players.get(turn.thisTurn()).winnerDisplay();
     }

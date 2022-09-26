@@ -16,11 +16,13 @@ public class Player {
 
     public void addToken(Board board) {
         System.out.println("Player " + this.color + " turn");
-        System.out.println("Type the column where you want to insert the token:");
-        if (Objects.equals(type, "human"))
+        if (Objects.equals(type, "human")) {
+            System.out.println("Type the column where you want to insert the token:");
             board.addToken(Integer.parseInt(input.nextLine()) - 1, this.color);
-        else
+        } else {
+            System.out.println("The machine has chosen the column:");
             board.addToken(random.nextInt(6 - 1 + 1) + 1, this.color);
+        }
     }
 
     public void winnerDisplay() {
