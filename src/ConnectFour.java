@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConnectFour {
     private final Board board = new Board();
-    private final List<Player> players = new ArrayList<>(2);
+    private final List<Player> players = new ArrayList<>();
     private final Turn turn = new Turn();
 
     public ConnectFour() {
@@ -30,10 +30,10 @@ public class ConnectFour {
             createPlayers( 2,"human");
         }
     }
-    int num=0;
+
     private void createPlayers(int numberPlayers, String type) {
         for (int i = 0; i < numberPlayers; i++) {
-            players.add( new Player(Color.values()[num++], type));
+            players.add( new Player(Color.values()[players.size()], type));
         }
     }
 
