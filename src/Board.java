@@ -22,8 +22,9 @@ public class Board {
                 row += squares[i][j].getColor().getCode() + " ";
             }
             graphicBoard += row + "\n";
+            System.out.println(row);
         }
-        System.out.println(graphicBoard);
+        //System.out.println(graphicBoard);
     }
 
     public void addToken(int column, Color color){
@@ -63,19 +64,9 @@ public class Board {
     }
 
     private Coordinate nextCoordinate(Coordinate square, Direction direction){
-        Coordinate next = null;
-        try {
-            if (direction == Direction.SOUTH) {
-                next = squares[square.getX() + 1][square.getY()];
-            } else if (direction == Direction.EAST) {
-                next = squares[square.getX()][square.getY() + 1];
-            } else if (direction == Direction.WEST) {
-                next = squares[square.getX()][square.getY() - 1];
-            } else if (direction == Direction.MAIN_DIAGONAL) {
-                next = squares[square.getX() + 1][square.getY() - 1];
-            } else if (direction == Direction.INVERSE_DIAGONAL) {
-                next = squares[square.getX() + 1][square.getY() + 1];
-            }
+        Coordinate next;
+        try{
+            next= squares[square.getX() + direction.getX()][square.getY() + direction.getY()];
         }catch (ArrayIndexOutOfBoundsException e){
             next = null;
         }
