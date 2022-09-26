@@ -26,7 +26,7 @@ public class Board {
         System.out.println(graphicBoard);
     }
 
-    public boolean addToken(int column, Color color){
+    public void addToken(int column, Color color){
         boolean added= false;
         if(column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)){
             int i= ROWS-1;
@@ -36,7 +36,6 @@ public class Board {
             squares[i][column] = new Coordinate(i,column,color);
             lastSquare= squares[i][column];
         }
-        return added;
     }
     public boolean hasFourConnected() {
         int counter = 1;
@@ -60,7 +59,7 @@ public class Board {
         if(counter==4){
             hasFour=true;
         }
-        return hasFour;
+        return !hasFour;
     }
 
     private Coordinate nextCoordinate(Coordinate square, Direction direction){

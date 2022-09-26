@@ -1,12 +1,12 @@
 public enum Color {
     RED('1'), YELLOW('2'), NULL;
 
-    private char code;
+    private final char code;
 
-    private Color(char code){
+     Color(char code){
         this.code= code;
     }
-    private Color(){
+     Color(){
         this.code= 0;
     }
 
