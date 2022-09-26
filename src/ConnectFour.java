@@ -1,12 +1,37 @@
+import java.util.Scanner;
+
 public class ConnectFour {
-    private final int NUMBER_PLAYERS = 2;
     private final Board board = new Board();
-    private final Player[] players = new Player[NUMBER_PLAYERS];
-    private final Turn turn=new Turn();
+    private final Player[] players = new Player[2];
+    private final Turn turn = new Turn();
 
     public ConnectFour() {
-        for (int i = 0; i < NUMBER_PLAYERS; i++) {
-            players[i] = new Player(Color.values()[i]);
+        gamePreparation();
+    }
+
+    private void gamePreparation() {
+        Scanner input = new Scanner(System.in);
+        int numberPlayers;
+        do {
+            System.out.println("How many players play 0, 1 or 2?");
+            numberPlayers = input.nextInt();
+        } while (!(0 <= numberPlayers || numberPlayers < 3));
+
+        if (numberPlayers == 0) {
+            createPlayers(2, "machine");
+        }
+        if (numberPlayers == 1) {
+            createPlayers(numberPlayers, "human");
+            createPlayers(numberPlayers, "machine");
+        }
+        if (numberPlayers == 2) {
+            createPlayers(numberPlayers, "human");
+        }
+    }
+
+    private void createPlayers(int numberPlayers, String type) {
+        for (int i = 0; i < numberPlayers; i++) {
+            players[i] = new Player(Color.values()[i], type);
         }
     }
 
