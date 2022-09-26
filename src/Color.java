@@ -3,14 +3,15 @@ public enum Color {
 
     private final char code;
 
-     Color(char code){
-        this.code= code;
-    }
-     Color(){
-        this.code= 0;
+    Color(char code) {
+        this.code = code;
     }
 
-    public char getCode(){
+    Color() {
+        this.code = 0;
+    }
+
+    public char getCode() {
         return code;
     }
 }

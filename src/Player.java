@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Player {
     private final Color color;
     private final String type;
-    Scanner input = new Scanner(System.in);
-    Random random = new Random();
+    private final Scanner input = new Scanner(System.in);
+    private final Random random = new Random();
 
     public Player(Color color, String type) {
         this.color = color;

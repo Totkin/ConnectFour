@@ -24,47 +24,47 @@ public class Board {
         }
     }
 
-    public void addToken(int column, Color color){
-        boolean added= false;
-        if(column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)){
-            int i= ROWS-1;
-            while(!squares[i][column].hasColor(Color.NULL)){
+    public void addToken(int column, Color color) {
+        if (column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)) {
+            int i = ROWS - 1;
+            while (!squares[i][column].hasColor(Color.NULL)) {
                 i--;
             }
-            squares[i][column] = new Coordinate(i,column,color);
-            lastSquare= squares[i][column];
+            squares[i][column] = new Coordinate(i, column, color);
+            lastSquare = squares[i][column];
         }
     }
+
     public boolean hasFourConnected() {
         int counter = 1;
-        int i=0;
+        int i = 0;
         boolean hasFour = false;
-        Direction[] directions= Direction.values();
-        Coordinate initialSquare= lastSquare;
-        Coordinate actualSquare= lastSquare;
-        while(i< directions.length && counter<4) {
-            if(actualSquare.equals(nextCoordinate(actualSquare, directions[i]))) {
+        Direction[] directions = Direction.values();
+        Coordinate initialSquare = lastSquare;
+        Coordinate actualSquare = lastSquare;
+        while (i < directions.length && counter < 4) {
+            if (actualSquare.equals(nextCoordinate(actualSquare, directions[i]))) {
                 counter++;
                 actualSquare = nextCoordinate(actualSquare, directions[i]);
-            }else{
-                if(directions[i] != Direction.EAST) {
+            } else {
+                if (directions[i] != Direction.EAST) {
                     counter = 1;
                 }
                 i++;
-                actualSquare= initialSquare;
+                actualSquare = initialSquare;
             }
         }
-        if(counter==4){
-            hasFour=true;
+        if (counter == 4) {
+            hasFour = true;
         }
         return hasFour;
     }
 
-    private Coordinate nextCoordinate(Coordinate square, Direction direction){
+    private Coordinate nextCoordinate(Coordinate square, Direction direction) {
         Coordinate next;
-        try{
-            next= squares[square.getX() + direction.getX()][square.getY() + direction.getY()];
-        }catch (ArrayIndexOutOfBoundsException e){
+        try {
+            next = squares[square.getX() + direction.getX()][square.getY() + direction.getY()];
+        } catch (ArrayIndexOutOfBoundsException e) {
             next = null;
         }
         return next;

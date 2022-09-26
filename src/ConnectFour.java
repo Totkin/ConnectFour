@@ -20,20 +20,20 @@ public class ConnectFour {
         } while (!(0 <= numberPlayers || numberPlayers < 3));
 
         if (numberPlayers == 0) {
-            createPlayers( 2,"machine");
+            createPlayers(2, "machine");
         }
         if (numberPlayers == 1) {
-            createPlayers( 1,"human");
-            createPlayers( 1,"machine");
+            createPlayers(1, "human");
+            createPlayers(1, "machine");
         }
         if (numberPlayers == 2) {
-            createPlayers( 2,"human");
+            createPlayers(2, "human");
         }
     }
 
     private void createPlayers(int numberPlayers, String type) {
         for (int i = 0; i < numberPlayers; i++) {
-            players.add( new Player(Color.values()[players.size()], type));
+            players.add(new Player(Color.values()[players.size()], type));
         }
     }
 
