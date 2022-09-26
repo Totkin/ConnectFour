@@ -1,12 +1,12 @@
 public class Board {
 
-    private final int rows = 6;
+    private final int ROWS = 6;
     private final int COLUMNS = 7;
-    private final Coordinate[][] squares = new Coordinate[rows][COLUMNS];
+    private final Coordinate[][] squares = new Coordinate[ROWS][COLUMNS];
     private Coordinate lastSquare;
 
     public Board() {
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
                 squares[i][j] = new Coordinate(Color.NULL);
             }
@@ -15,7 +15,7 @@ public class Board {
 
     public void paint() {
         String row;
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < ROWS; i++) {
             row = "";
             for (int j = 0; j < COLUMNS; j++) {
                 row += squares[i][j].getColor().getCode() + " ";
@@ -26,7 +26,7 @@ public class Board {
 
     public void addToken(int column, Color color) {
         if (column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)) {
-            int i = rows - 1;
+            int i = ROWS - 1;
             while (!squares[i][column].hasColor(Color.NULL)) {
                 i--;
             }
