@@ -34,7 +34,7 @@ public class Board {
             lastSquare = squares[i][column];
             return true;
         } else {
-            System.out.println("This column is full. Choose the other please");
+            System.out.println("This column is full. Choose other please:");
             return false;
         }
     }
