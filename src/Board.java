@@ -2,12 +2,13 @@ public class Board {
 
     private final int ROWS = 6;
     private final int COLUMNS = 7;
-    private char[][] squares = new char[ROWS][COLUMNS];
+    private Coordinate[][] squares = new Coordinate[ROWS][COLUMNS];
+    private Coordinate lastSquare;
 
     public Board() {
         for (int i = 0; i < ROWS; i++) {
             for (int j = 0; j < COLUMNS; j++) {
-                squares[i][j] = 0;
+                squares[i][j] = new Coordinate(Color.NULL);
             }
         }
     }
@@ -18,7 +19,7 @@ public class Board {
         for (int i = 0; i < ROWS; i++) {
             row = "";
             for (int j = 0; j < COLUMNS; j++) {
-                row += squares[i][j] + " ";
+                row += squares[i][j].getColor().getCode() + " ";
             }
             graphicBoard += row + "\n";
         }
@@ -27,110 +28,59 @@ public class Board {
 
     public boolean addToken(int column, Color color){
         boolean added= false;
-        if(column >= 0 && column < COLUMNS && squares[0][column] == 0){
+        if(column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)){
             int i= ROWS-1;
-            while(squares[i][column] != 0){
+            while(!squares[i][column].hasColor(Color.NULL)){
                 i--;
             }
-            squares[i][column] = color.getGraphicRepresentation();
+            squares[i][column] = new Coordinate(i,column,color);
+            lastSquare= squares[i][column];
         }
         return added;
     }
-
     public boolean hasFourConnected() {
-        int color;
-        boolean hasFour = false;
-        mainLoop:
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLUMNS; j++) {
-                color = squares[i][j];
-                if (color != 0) {
-                    if (hasFour = hasFourDown(color, i, j)) {
-                        break mainLoop;
-                    }
-                    if (hasFour = hasFourRight(color, i, j)) {
-                        break mainLoop;
-                    }
-                    if (hasFour = hasFourDownRight(color, i, j)) {
-                        break mainLoop;
-                    }
-                    if (hasFour = hasFourDownLeft(color, i, j)) {
-                        break mainLoop;
-                    }
-                }
-            }
-        }
-        return hasFour;
-    }
-
-    //checks if given a square, it has 3 more tokens under it with the same color
-    private boolean hasFourDown(int color, int i, int j) {
         int counter = 1;
+        int i=0;
         boolean hasFour = false;
-        if (ROWS - i >= 4) {
-            while (i + 1 < ROWS && color == squares[i + 1][j]) {
+        Direction[] directions= Direction.values();
+        Coordinate initialSquare= lastSquare;
+        Coordinate actualSquare= lastSquare;
+        while(i< directions.length && counter<4) {
+            if(actualSquare.equals(nextCoordinate(actualSquare, directions[i]))) {
+                counter++;
+                actualSquare = nextCoordinate(actualSquare, directions[i]);
+            }else{
+                if(directions[i] != Direction.EAST) {
+                    counter = 1;
+                }
                 i++;
-                counter++;
-                if (counter == 4) {
-                    hasFour = true;
-                    break;
-                }
+                actualSquare= initialSquare;
             }
+        }
+        if(counter==4){
+            hasFour=true;
         }
         return hasFour;
     }
 
-    //checks if given a square, it has 3 more tokens right it with the same color
-    private boolean hasFourRight(int color, int i, int j) {
-        int counter = 1;
-        boolean hasFour = false;
-        if (COLUMNS - j >= 4) {
-            while (j + 1 < COLUMNS && color == squares[i][j + 1]) {
-                j++;
-                counter++;
-                if (counter == 4) {
-                    hasFour = true;
-                    break;
-                }
+    private Coordinate nextCoordinate(Coordinate square, Direction direction){
+        Coordinate next = null;
+        try {
+            if (direction == Direction.SOUTH) {
+                next = squares[square.getX() + 1][square.getY()];
+            } else if (direction == Direction.EAST) {
+                next = squares[square.getX()][square.getY() + 1];
+            } else if (direction == Direction.WEST) {
+                next = squares[square.getX()][square.getY() - 1];
+            } else if (direction == Direction.MAIN_DIAGONAL) {
+                next = squares[square.getX() + 1][square.getY() - 1];
+            } else if (direction == Direction.INVERSE_DIAGONAL) {
+                next = squares[square.getX() + 1][square.getY() + 1];
             }
+        }catch (ArrayIndexOutOfBoundsException e){
+            next = null;
         }
-        return hasFour;
-    }
-
-    //checks if given a square, it has 3 more tokens in the down right diagonal with the same color
-    private boolean hasFourDownRight(int color, int i, int j) {
-        int counter = 1;
-        boolean hasFour = false;
-        if (ROWS - i >= 4 && COLUMNS - j >= 4) {
-            while (i + 1 < ROWS && j + 1 < COLUMNS && color == squares[i + 1][j + 1]) {
-                i++;
-                j++;
-                counter++;
-                if (counter == 4) {
-                    hasFour = true;
-                    break;
-                }
-            }
-        }
-        return hasFour;
-    }
-
-    //checks if given a square, it has 3 more tokens in the down left diagonal with the same color
-    private boolean hasFourDownLeft(int color, int i, int j) {
-        int counter = 1;
-        boolean hasFour = false;
-        if (ROWS - i >= 4 && j + 1 >= 4) {
-            while (i + 1 < ROWS && j - 1 >= 0 && color == squares[i + 1][j - 1]) {
-                i++;
-                j--;
-                counter++;
-                if (counter == 4) {
-                    hasFour = true;
-                    break;
-                }
-            }
-        }
-        return hasFour;
+        return next;
     }
 
 }
