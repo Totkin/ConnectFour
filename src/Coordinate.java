@@ -12,7 +12,6 @@ public class Coordinate {
     public Coordinate(Color color){
         this.color = color;
     }
-
     public boolean hasColor(Color color){
         return this.color == color;
     }

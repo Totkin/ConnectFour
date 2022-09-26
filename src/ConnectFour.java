@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class ConnectFour {
     private final int NUMBER_PLAYERS= 2;
     private Board board = new Board();
