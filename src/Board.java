@@ -2,7 +2,7 @@ public class Board {
 
     private final int ROWS = 6;
     private final int COLUMNS = 7;
-    private Coordinate[][] squares = new Coordinate[ROWS][COLUMNS];
+    private final Coordinate[][] squares = new Coordinate[ROWS][COLUMNS];
     private Coordinate lastSquare;
 
     public Board() {
