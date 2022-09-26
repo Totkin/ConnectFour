@@ -3,9 +3,6 @@ import java.util.Scanner;
 public class Player {
     private Color color;
 
-    /*public Player(String color) {
-        this.color = color.charAt(0);
-    }*/
     public Player(Color color) {
         this.color = color;
     }

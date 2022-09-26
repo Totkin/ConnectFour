@@ -4,15 +4,9 @@ import java.util.List;
 public class ConnectFour {
     private final int NUMBER_PLAYERS= 2;
     private Board board = new Board();
-    //Player[] players = {new Player(1), new Player(2)};
-    //List<Player> players = new ArrayList<>();
     private Player[] players= new Player[NUMBER_PLAYERS];
-    //String[] colores = {"Red", "Yellow"};
 
     public ConnectFour() {
-        /*for (String color : colores) {
-            this.players.add(new Player(color));
-        }*/
         for(int i=0; i< NUMBER_PLAYERS; i++){
             players[i]= new Player(Color.values()[i]);
         }
