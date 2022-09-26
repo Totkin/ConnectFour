@@ -33,9 +33,9 @@ public class ConnectFour {
 
     private void createPlayers(int numberPlayers, String type) {
         for (int i = 0; i < numberPlayers; i++) {
-            if(type.equals("human")){
+            if (type.equals("human")) {
                 players.add(new UserPlayer(Color.values()[players.size()]));
-            }else{
+            } else {
                 players.add(new MachinePlayer(Color.values()[players.size()]));
             }
         }

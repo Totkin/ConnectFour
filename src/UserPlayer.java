@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
-public class UserPlayer extends Player{
+public class UserPlayer extends Player {
     private final Scanner input = new Scanner(System.in);
+
     public UserPlayer(Color color) {
         super(color);
     }
@@ -10,9 +11,18 @@ public class UserPlayer extends Player{
     public void addToken(Board board) {
         boolean added;
         System.out.println("Player " + super.color + " turn");
-        System.out.println("Type the column where you want to insert the token:");
         do {
-            added = board.addToken(Integer.parseInt(input.nextLine()) - 1, super.color);
+            added = board.addToken(inputNumber() - 1, super.color);
         } while (!added);
+    }
+
+    private int inputNumber() {
+        int inputNumber;
+        do {
+            System.out.println("Type the column where you want to insert the token from 1 to 7:");
+            while (!input.hasNextInt()) input.next();
+            inputNumber = input.nextInt();
+        } while (!(0 < inputNumber && inputNumber < 8));
+        return inputNumber;
     }
 }
