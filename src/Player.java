@@ -1,5 +1,4 @@
 import java.util.Objects;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Player {
@@ -23,7 +22,7 @@ public class Player {
         if (Objects.equals(type, "machine")) {
             System.out.println("The machine has chosen the column:");
             do {
-                added= board.addToken((int) (Math.random() * 7) , this.color);
+                added = board.addToken((int) (Math.random() * 7), this.color);
             } while (!added);
         }
     }
@@ -32,7 +31,7 @@ public class Player {
         System.out.println("Game finished: the player " + this.color + " has won");
     }
 
-    private int inputNumber(){
+    private int inputNumber() {
         int inputNumber;
         do {
             System.out.println("Type the column where you want to insert the token from 1 to 7:");
