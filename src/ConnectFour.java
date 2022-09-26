@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConnectFour {
     private final Board board = new Board();
-    private final Player[] players = new Player[2];
+    private final List<Player> players = new ArrayList<>(2);
     private final Turn turn = new Turn();
 
     public ConnectFour() {
@@ -18,20 +20,20 @@ public class ConnectFour {
         } while (!(0 <= numberPlayers || numberPlayers < 3));
 
         if (numberPlayers == 0) {
-            createPlayers(2, "machine");
+            createPlayers( 2,"machine");
         }
         if (numberPlayers == 1) {
-            createPlayers(numberPlayers, "human");
-            createPlayers(numberPlayers, "machine");
+            createPlayers( 1,"human");
+            createPlayers( 1,"machine");
         }
         if (numberPlayers == 2) {
-            createPlayers(numberPlayers, "human");
+            createPlayers( 2,"human");
         }
     }
-
+    int num=0;
     private void createPlayers(int numberPlayers, String type) {
         for (int i = 0; i < numberPlayers; i++) {
-            players[i] = new Player(Color.values()[i], type);
+            players.add( new Player(Color.values()[num++], type));
         }
     }
 
@@ -39,10 +41,10 @@ public class ConnectFour {
         System.out.println("Game start");
         do {
             board.paint();
-            players[turn.takeTurn()].addToken(board);
+            players.get(turn.takeTurn()).addToken(board);
         } while (board.hasFourConnected());
         board.paint();
-        players[turn.thisTurn()].winnerDisplay();
+        players.get(turn.thisTurn()).winnerDisplay();
     }
 
     public static void main(String[] args) {
