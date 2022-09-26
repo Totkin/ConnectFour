@@ -3,5 +3,5 @@ public enum Direction {
     EAST,
     WEST,
     MAIN_DIAGONAL,
-    INVERSE_DIAGONAL;
+    INVERSE_DIAGONAL
 }
