@@ -6,7 +6,6 @@ public class Player {
     private final Color color;
     private final String type;
     private final Scanner input = new Scanner(System.in);
-    private final Random random = new Random();
 
     public Player(Color color, String type) {
         this.color = color;
@@ -25,7 +24,7 @@ public class Player {
         if (Objects.equals(type, "machine")) {
             System.out.println("The machine has chosen the column:");
             do {
-                added= board.addToken(random.nextInt(6 - 1 + 1) + 1, this.color);
+                added= board.addToken((int) (Math.random() * 7) , this.color);
             } while (!added);
         }
     }
