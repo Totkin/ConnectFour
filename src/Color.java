@@ -1,13 +1,16 @@
 public enum Color {
-    RED('1'), YELLOW('2');
+    RED('1'), YELLOW('2'), NULL;
 
-    private char graphicRepresentation;
+    private char code;
 
-    private Color(char graphicRepresentation){
-        this.graphicRepresentation= graphicRepresentation;
+    private Color(char code){
+        this.code= code;
+    }
+    private Color(){
+        this.code= 0;
     }
 
-    public char getGraphicRepresentation(){
-        return graphicRepresentation;
+    public char getCode(){
+        return code;
     }
 }
