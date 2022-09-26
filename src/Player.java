@@ -18,7 +18,7 @@ public class Player {
         if (Objects.equals(type, "human")) {
             System.out.println("Type the column where you want to insert the token:");
             board.addToken(Integer.parseInt(input.nextLine()) - 1, this.color);
-        } else {
+        }  if (Objects.equals(type, "machine"))  {
             System.out.println("The machine has chosen the column:");
             board.addToken(random.nextInt(6 - 1 + 1) + 1, this.color);
         }
