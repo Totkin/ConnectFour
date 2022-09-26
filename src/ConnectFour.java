@@ -1,12 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class ConnectFour {
-    private final int NUMBER_PLAYERS = 2;
     private final Board board = new Board();
-    private final Player[] players = new Player[NUMBER_PLAYERS];
-    private final Turn turn=new Turn();
+    private final List<Player> players = new ArrayList<>(2);
+    private final Turn turn = new Turn();
 
     public ConnectFour() {
-        for (int i = 0; i < NUMBER_PLAYERS; i++) {
-            players[i] = new Player(Color.values()[i]);
+        gamePreparation();
+    }
+
+    private void gamePreparation() {
+        Scanner input = new Scanner(System.in);
+        int numberPlayers;
+        do {
+            System.out.println("How many players play 0, 1 or 2?");
+            numberPlayers = input.nextInt();
+        } while (!(0 <= numberPlayers || numberPlayers < 3));
+
+        if (numberPlayers == 0) {
+            createPlayers( 2,"machine");
+        }
+        if (numberPlayers == 1) {
+            createPlayers( 1,"human");
+            createPlayers( 1,"machine");
+        }
+        if (numberPlayers == 2) {
+            createPlayers( 2,"human");
+        }
+    }
+    int num=0;
+    private void createPlayers(int numberPlayers, String type) {
+        for (int i = 0; i < numberPlayers; i++) {
+            players.add( new Player(Color.values()[num++], type));
         }
     }
 
@@ -14,10 +41,10 @@ public class ConnectFour {
         System.out.println("Game start");
         do {
             board.paint();
-            players[turn.takeTurn()].addToken(board);
+            players.get(turn.takeTurn()).addToken(board);
         } while (board.hasFourConnected());
         board.paint();
-        players[turn.thisTurn()].winnerDisplay();
+        players.get(turn.thisTurn()).winnerDisplay();
     }
 
     public static void main(String[] args) {
