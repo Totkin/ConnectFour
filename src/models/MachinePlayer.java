@@ -1,6 +1,6 @@
 package models;
 
-import interfaces.Player;
+import models.interfaces.Player;
 import types.Color;
 
 public class MachinePlayer extends Player {

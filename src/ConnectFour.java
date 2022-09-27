@@ -1,4 +1,4 @@
-import interfaces.Player;
+import models.interfaces.Player;
 import models.Board;
 import models.MachinePlayer;
 import models.Turn;

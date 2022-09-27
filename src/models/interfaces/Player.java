@@ -1,4 +1,4 @@
-package interfaces;
+package models.interfaces;
 
 import models.Board;
 import types.Color;
