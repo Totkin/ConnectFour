@@ -55,4 +55,3 @@ public class ConnectFour {
         new ConnectFour().play();
     }
 }
-
