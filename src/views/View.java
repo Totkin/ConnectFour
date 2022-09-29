@@ -5,17 +5,17 @@ import models.Player;
 
 public class View {
     private final BoardView boardView;
-    private final GameView gameView;
+    private final StartView startView;
     private final PlayerView playerView;
 
     public View() {
         boardView = new BoardView();
-        gameView = new GameView();
+        startView = new StartView();
         playerView = new PlayerView();
     }
 
     public int gameInit() {
-        return gameView.gameInit();
+        return startView.gameInit();
     }
 
     public void writeBoard(Board board) {

@@ -2,7 +2,7 @@ package views;
 
 import java.util.Scanner;
 
-public class GameView {
+public class StartView {
     Scanner input = new Scanner(System.in);
 
     public int gameInit() {
