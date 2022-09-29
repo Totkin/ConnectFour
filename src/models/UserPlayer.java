@@ -8,7 +8,7 @@ public class UserPlayer extends Player {
     }
 
     @Override
-    public boolean addToken(Board board) {
-        return board.addToken(playerView.writeTurn(this), super.color);
+    public void addToken(Board board) {
+        board.addToken(playerView.writeTurn(this), super.color);
     }
 }

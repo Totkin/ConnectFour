@@ -1,7 +1,8 @@
 package models;
-import types .Coordinate;
-import types.Direction;
+
 import types.Color;
+import types.Coordinate;
+import types.Direction;
 
 public class Board {
 
@@ -18,12 +19,12 @@ public class Board {
         }
     }
 
-    public Coordinate[][] getAllSquares(){
+    public Coordinate[][] getAllSquares() {
         return squares;
     }
 
     public boolean addToken(int column, Color color) {
-        boolean added= false;
+        boolean added = false;
         if (column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)) {
             int i = ROWS - 1;
             while (!squares[i][column].hasColor(Color.NULL)) {
@@ -31,7 +32,7 @@ public class Board {
             }
             squares[i][column] = new Coordinate(i, column, color);
             lastSquare = squares[i][column];
-            added= true;
+            added = true;
         }
         return added;
     }
