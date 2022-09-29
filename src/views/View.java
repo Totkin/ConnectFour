@@ -8,20 +8,21 @@ public class View {
     private final GameView gameView;
     private final PlayerView playerView;
 
-    public View(){
-        boardView= new BoardView();
-        gameView= new GameView();
-        playerView= new PlayerView();
+    public View() {
+        boardView = new BoardView();
+        gameView = new GameView();
+        playerView = new PlayerView();
     }
 
-    public int gameInit(){
+    public int gameInit() {
         return gameView.gameInit();
     }
 
-    public void writeBoard(Board board){
+    public void writeBoard(Board board) {
         boardView.write(board);
     }
-    public void writeWinner(Player player){
+
+    public void writeWinner(Player player) {
         playerView.writeWinner(player);
     }
 }
