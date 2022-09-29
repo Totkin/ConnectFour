@@ -1,8 +1,7 @@
 package models;
-
-import types.Color;
-import types.Coordinate;
+import types .Coordinate;
 import types.Direction;
+import types.Color;
 
 public class Board {
 
@@ -19,18 +18,12 @@ public class Board {
         }
     }
 
-    public void paint() {
-        String row;
-        for (int i = 0; i < ROWS; i++) {
-            row = "";
-            for (int j = 0; j < COLUMNS; j++) {
-                row += squares[i][j].getColor().getCode() + " ";
-            }
-            System.out.println(row);
-        }
+    public Coordinate[][] getAllSquares(){
+        return squares;
     }
 
     public boolean addToken(int column, Color color) {
+        boolean added= false;
         if (column >= 0 && column < COLUMNS && squares[0][column].hasColor(Color.NULL)) {
             int i = ROWS - 1;
             while (!squares[i][column].hasColor(Color.NULL)) {
@@ -38,11 +31,9 @@ public class Board {
             }
             squares[i][column] = new Coordinate(i, column, color);
             lastSquare = squares[i][column];
-            return true;
-        } else {
-            System.out.println("Error. Choose other column please (1-7):");
-            return false;
+            added= true;
         }
+        return added;
     }
 
     public boolean hasFourConnected() {
